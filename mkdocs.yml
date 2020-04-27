@@ -1,0 +1,33 @@
+site_name: Bia Language
+use_directory_urls: false
+theme:
+  name: material
+  font: false
+markdown_extensions:
+  - admonition
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+  - pymdownx.caret
+  - codehilite
+nav:
+  - Home: index.md
+  - Introduction:
+      - Getting Started: Introduction/Getting Started.md
+      - Embedding: Introduction/Embedding.md
+  - Types:
+    - Numbers: Types/Numbers.md
+    - Strings: Types/Strings.md
+    - Regex: Types/Regex.md
+  - Examples:
+    - Hello World: Examples/Hello World.md
+  - Syntax:
+    - Comments: Syntax/Comments.md
+    - Syntax: Syntax/Syntax.md
+    - Operators: Syntax/Operators.md
+  - Engine:
+    - Engine: Engine/Engine.md
+    - Memory: Engine/Memory.md
+    - Op Codes: Engine/Op Codes.md
+  - Specification:
+    - Scopes: Specification/Scopes.md
