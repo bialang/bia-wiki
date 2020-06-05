@@ -2,14 +2,6 @@
 
 For full documentation visit [mkdocs.org](https://mkdocs.org).
 
-## Building
-
-### Prerequisites
-
-- [CMake](https://cmake.org/) at least Version 3.1
-- C++ Compiler with at least C++11 support
-- Git
-
 ## Dependencies
 
 No dependency is actually required, however, the **bold** printed dependecies are recommended and enabled by default.
@@ -28,32 +20,36 @@ No dependency is actually required, however, the **bold** printed dependecies ar
 
 [Catch2]([#](https://github.com/catchorg/Catch2)) is required for testing and is in the repository included (no additional cloning).
 
-## Configuration
+## Building from Source
 
-## Compiling
+Prerequisites:
 
-### Getting the Source Code
+- [CMake](https://cmake.org/) at least Version 3.1
+- C++ Compiler with at least C++11 support
+- Git
+
+The source code can be retrieved from GitHub with ❤
 
 ```bash
-git clone https://github.com/terrakuh/Bia.git
-mkdir Bia/build
-cd Bia/build
+git clone https://github.com/bialang/bia.git
+mkdir bia/build
+cd bia/build
 ```
 
-### Building
+With CMake and the source code, the library can be build as follows:
 
 ```bash
 cmake .. -DCMAKE_BUILD_TYPE=Release
 cmake --build .
 ```
 
-### Testing
+We recommend running the test before installing the library:
 
 ```bash
 ctest
 ```
 
-### Installing
+If every test passed, everthing is good to go and the following command can be run (elevated privileges may be required). However, if any test failed, please open an issue on GitHub.
 
 ```bash
 cmake --build . --target install

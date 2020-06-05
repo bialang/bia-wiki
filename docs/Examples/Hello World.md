@@ -22,7 +22,7 @@ int main()
 
 		let name = "Bia"
 
-		io.puts(f"Hello, World! - {name}")
+		io.print(f"Hello, World! - {name}")
 		hello_world()
 	)");
 }
