@@ -15,6 +15,7 @@ nav:
   - Introduction:
       - Getting Started: Introduction/Getting Started.md
       - Embedding: Introduction/Embedding.md
+      - Cheatsheet: Introduction/Cheatsheet.md
   - Types:
     - Numbers: Types/Numbers.md
     - Strings: Types/Strings.md
