@@ -23,7 +23,6 @@ nav:
     - Hello World: Examples/Hello World.md
   - Syntax:
     - Comments: Syntax/Comments.md
-    - Syntax: Syntax/Syntax.md
     - Operators: Syntax/Operators.md
   - Engine:
     - Engine: Engine/Engine.md
@@ -31,3 +30,4 @@ nav:
     - Op Codes: Engine/Op Codes.md
   - Specification:
     - Scopes: Specification/Scopes.md
+    - Variables: Specification/Variables.md

@@ -1,3 +1,0 @@
-# Syntax
-
-## EBFN Syntax
