@@ -4,26 +4,28 @@ This examples demonstrates how to bind a simple C++ function to an engine and th
 
 ```cpp
 #include <bia/bia.hpp>
+#include <bia/bsl/io.hpp>
 #include <iostream>
-
-inline void hello_world()
-{
-	std::cout << "Hello, World! - C++\n";
-}
+#include <sstream>
 
 int main()
 {
-	bia::engine eng;
+  bia::engine engine;
 
-	eng.fun("hello_world", &hello_world);
+  engine.function("hello_world", +[] { std::cout << "Hello, World! - C++\n"; });
+  engine.module<bia::bsl::io>("io", engine.gc());
 
-	eng.execute(R"(
-		import io
+  std::stringstream code;
 
-		let name = "Bia"
+  code << u8R"(
+    // prints 'Hello, World' to the console
+    import io
+    io.print("Hello, World! - Bia")
 
-		io.print(f"Hello, World! - {name}")
-		hello_world()
-	)");
+    // calls the C++ function and print 'Hello, World - C++' to the console
+    hello_world()
+  )";
+
+  engine.execute(code);
 }
 ```

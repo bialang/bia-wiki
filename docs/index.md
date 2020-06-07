@@ -1,20 +1,12 @@
 # Welcome to Bia
 
-For full documentation visit [mkdocs.org](https://mkdocs.org).
-
 ## Dependencies
 
 No dependency is actually required, however, the **bold** printed dependecies are recommended and enabled by default.
 
-| Dependency                              | Usage                      | Configuration                    |
-| --------------------------------------- | -------------------------- | -------------------------------- |
-| **[ICU](http://site.icu-project.org/)** | String encoding conversion | BIA_STRING_ENCODING_BACKEND=ICU  |
-| **[MPIR](http://mpir.org/)**            | Integrated big numbers     | BIA_BIG_INT_BACKEND=MPIR         |
-| **[PCRE2](#)**                          |                            | BIA_REGEX_BACKEND=PCRE2          |
-| [std::regex](#)                         |                            | BIA_REGEX_BACKEND=std::regex     |
-| [boost::regex](#)                       |                            | BIA_REGEX_BACKEND=boost::regex   |
-| **[std::thread](#)**                    |                            | BIA_THREAD_BACKEND=std::thread   |
-| [boost::thread](#)                      |                            | BIA_THREAD_BACKEND=boost::thread |
+| Dependency  | Usage | Configuration                  | Default                   |
+| ----------- | ----- | ------------------------------ | ------------------------- |
+| std::thread |       | BIA_THREAD_BACKEND=std::thread | *default* and recommended |
 
 ### Required for Testing
 
@@ -24,9 +16,9 @@ No dependency is actually required, however, the **bold** printed dependecies ar
 
 Prerequisites:
 
-- [CMake](https://cmake.org/) at least Version 3.1
-- C++ Compiler with at least C++11 support
-- Git
+- CMake *(version 3.1)*
+- C++ compiler with at least C++11 support
+- git
 
 The source code can be retrieved from GitHub with ❤
 

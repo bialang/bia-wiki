@@ -1,10 +1,18 @@
 # String
 
-## Comparing strings
+## Comparing Strings
 
 Strings can be compared with the `==` or `!=` operators or with `equals` or `iequals` for case-insensitive comparing. Additionally `compare` or `icompare` return an integer value describing the comparison.
 
-## Iterating over strings
+```bia
+import io
+
+io.print("bia" == "Bia") // 0
+io.print("bia" != "Bia") // 1
+io.print("Bia" in "I like Bia") // 1
+```
+
+## Iterating over Strings
 
 When accessing characters at a specific position keep in mind that the code unit is returned and not the actual code point. When the string consists of only BMP characters all code units are also code points (see UTF-16 encoding).
 
@@ -37,33 +45,17 @@ for string.length times {
 }
 ```
 
-## Normal strings
+## Normal Strings
 
 'Normal' strings are enclosed in either two `"` (double quotes) or `'` (single quotes). Normal strings can expand over multiple lines.
 
-## Raw strings
-
-Raw strings cannot contain escape characters and can expand over mutliple lines.
-
-## Template strings
-
-Template strings are enclosed between two \` (grave accents). Inside these strings normal Bia expression can be evaluated inside `${}` and put inplace like following:
-
-```
-let x = 1
-let z = 9
-
-// prints y = x + z = 10
-print(`y = x + z = ${x+z}`)
-```
-
-## Escape characters
+## Escape Characters
 
 The following escape sequences are valid if the string is not a [raw string](#raw-strings).
 
 | Escape sequence | Meaning                               |
 | --------------- | ------------------------------------- |
-| \\|Backslash    |
+| \\|Backslash    |                                       |
 | \'              | Single quote                          |
 | \"              | Double quote                          |
 | \a              | Audible bell                          |
@@ -78,7 +70,7 @@ The following escape sequences are valid if the string is not a [raw string](#ra
 | \unnnn          | Arbitrary Unicode value (hexadecimal) |
 | \Unnnnnnnn      | Arbitrary Unicode value (hexadecimal) |
 
-## Guaranteed supported encodings
+## Guaranteed supported Encodings
 
 Depending on the underlying encoding implementation different encodings are supported.
 
@@ -89,16 +81,6 @@ Always supported:
 - UTF-16LE and UTF-16BE
 - UTF-32LE and UTF-32BE
 
-## Supported underlying libraries
+## Internal Storage
 
-- [ICU](#) *default*
-
-If no library is provided only the guaranteed encodings [here](#guaranteed-supported-encodings) are supported.
-
-## Internal implementation
-
-Bia strings are stored as UTF-16 internally with the default CPU endianess. By defaut static strings are interned.
-
-## Limitations
-
-The maximum allowed string length cannot exceed 2^64-1 which is equal to `18 446 744 073 709 551 615`.
+Bia strings are stored as UTF-8 internally.
