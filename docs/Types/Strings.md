@@ -16,38 +16,12 @@ io.print("Bia" in "I like Bia") // 1
 
 When accessing characters at a specific position keep in mind that the code unit is returned and not the actual code point. When the string consists of only BMP characters all code units are also code points (see UTF-16 encoding).
 
-```
+```bia
 let string = "aが"
 
 // prints 3
 print(string.length)
-
-// prints a
-print(string[0])
-
-// prints the low surrogate and not が
-print(string[1])
 ```
-
-The correct way to iterate over strings:
-
-```
-for c in string {
-	print(c)
-}
-```
-
-The wrong way to iterate over string:
-
-```
-for string.length times {
-	print(string[$i])
-}
-```
-
-## Normal Strings
-
-'Normal' strings are enclosed in either two `"` (double quotes) or `'` (single quotes). Normal strings can expand over multiple lines.
 
 ## Escape Characters
 
@@ -65,10 +39,6 @@ The following escape sequences are valid if the string is not a [raw string](#ra
 | \r              | Carriage return                       |
 | \t              | Horizontal tab                        |
 | \v              | Vertical tab                          |
-| \nnn            | Arbitrary octal value                 |
-| \xnn            | Arbitrary hexadecimal value           |
-| \unnnn          | Arbitrary Unicode value (hexadecimal) |
-| \Unnnnnnnn      | Arbitrary Unicode value (hexadecimal) |
 
 ## Guaranteed supported Encodings
 

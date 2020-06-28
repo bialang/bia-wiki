@@ -14,15 +14,19 @@ inline int square(int x)
 
 // static function
 engine.function("square", &square);
+
+// functor/lambda
+engine.function("special", [](int x) { return x * x; });
 ```
 
 ## Advanced Functions
 
 ```cpp
-inline int sum(bia::parameters params)
+inline int sum(bia::connector::parameters_type params)
 {
 	int s = 0;
 
+	// all parameters
 	for (auto param : params) {
 		if (param) {
 			s += bia::cast<int>(*param);

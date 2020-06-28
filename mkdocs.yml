@@ -10,6 +10,7 @@ markdown_extensions:
   - pymdownx.tilde
   - pymdownx.caret
   - codehilite
+  - footnotes
 nav:
   - Home: index.md
   - Introduction:
@@ -30,5 +31,8 @@ nav:
     - Memory: Engine/Memory.md
     - Op Codes: Engine/Op Codes.md
   - Specification:
-    - Scopes: Specification/Scopes.md
     - Variables: Specification/Variables.md
+    - Flow Control: Specification/Flow Control.md
+    - Scopes: Specification/Scopes.md
+repo_name: bialang/bia
+repo_url: https://github.com/bialang/bia

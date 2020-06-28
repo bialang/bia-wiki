@@ -20,7 +20,7 @@ Prerequisites:
 - C++ compiler with at least C++11 support
 - git
 
-The source code can be retrieved from GitHub with ❤
+The source code can be retrieved from [GitHub](https://github.com/bialang/bia) with ❤
 
 ```bash
 git clone https://github.com/bialang/bia.git

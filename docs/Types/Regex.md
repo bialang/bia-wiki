@@ -1,38 +1,41 @@
-# Regex
+# Native Regular Expressions
 
 ## Syntax
 
 The pattern must be wrapped between `/` like following:
 
-```
+```bia
 let pattern = /ab+/
 ```
 
-## Modifiers
+A `/` can be escaped with a `\`. The `\` only acts as a escape character in that perticular case.
+
+!!! note
+    `//` is not a valid regex expression. See [comments](../Syntax/Comments.md) for more information.
+
+## Modifiers[^1]
 
 Modifiers come immediately after the enclosing `/` like:
 
-```
+```bia
 let pattern = /a.+/si
 ```
 
-| Modifier | Meaning                               |
-| -------- | ------------------------------------- |
-| m        | `^` and `$` match start/end of a line |
-| i        | case insensitive matching             |
-| s        | `.` matches every character           |
+| Modifier | Meaning                               | Engine                          |
+| -------- | ------------------------------------- | ------------------------------- |
+| m        | `^` and `$` match start/end of a line | PCRE2; `std::regex` since C++17 |
+| i        | case insensitive matching             | all                             |
+| s        | `.` matches every character           | PCRE2                           |
 
 ## Supported underlying engines
 
 Depending on the underlying engine different RegEx features are supported. For more information check out the engine documentations.
 
-- [PCRE2](#) *default*
-- [boost:regex](#)
-- [std::regex](#)
+- `std::regex` *default*
+- PCRE2[^1]
 
-If no engine is selected, the feature will be disabled and `bia::exception::unsupported_feature_exception` will be thrown when used. The underlying engine can be check with:
+```bia
+let engine_name = /./.name
+```
 
-```
-// returns null if no engine is supported
-let engine = //.name()
-```
+[^1]: This feature has not been implemented yet.
