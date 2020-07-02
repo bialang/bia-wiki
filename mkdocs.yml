@@ -21,6 +21,7 @@ nav:
     - Numbers: Types/Numbers.md
     - Strings: Types/Strings.md
     - Regex: Types/Regex.md
+    - List: Types/List.md
   - Examples:
     - Hello World: Examples/Hello World.md
   - Syntax:

@@ -29,3 +29,13 @@ while x {
 	x = y.something()
 }
 ```
+
+### `for...in`
+
+```bia
+for i in range(10) {
+	io.print(i)
+}
+```
+
+In this case the variable `i` will be declared only for the loop and will not be available outside of the scope. If a variable already existed with the same name, it will be overshadowed.
