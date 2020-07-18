@@ -21,6 +21,8 @@ engine.function("special", [](int x) { return x * x; });
 
 ## Advanced Functions
 
+### Variable Parameters
+
 ```cpp
 inline int sum(bia::connector::parameters_type params)
 {
@@ -37,4 +39,34 @@ inline int sum(bia::connector::parameters_type params)
 }
 
 engine.function("sum", &sum);
+```
+
+### Generators
+
+```cpp
+#include <bia/member/function/generator.hpp>
+
+inline bia::gc::gcable<bia::member::member> read_lines(const char* filename)
+{
+	const auto file = std::make_shared<std::fstream>(filename);
+
+	if (!file->is_open()) {
+		return {};
+	}
+
+	auto generator = [file]() -> bia::gc::gcable<bia::member::member> {
+		std::string line;
+
+		if (std::getline(*file, line)) {
+			return bia::creator::create(line);
+		}
+
+		return bia::member::function::stop_iteration;
+	};
+
+	return bia::gc::gc::active_gc()
+	    ->construct<bia::member::function::generator<
+	        bia::member::function::method<false, decltype(&decltype(generator)::operator())>>>(
+	        generator, &decltype(generator)::operator());
+}
 ```

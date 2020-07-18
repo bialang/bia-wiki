@@ -35,5 +35,6 @@ nav:
     - Variables: Specification/Variables.md
     - Flow Control: Specification/Flow Control.md
     - Scopes: Specification/Scopes.md
+    - Keywords: Specification/Keywords.md
 repo_name: bialang/bia
 repo_url: https://github.com/bialang/bia

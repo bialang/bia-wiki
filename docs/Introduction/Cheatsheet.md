@@ -34,6 +34,8 @@ let x = null // x is deleted
 
 ### Looping
 
+#### Condition Based
+
 ```bia
 while true {
 	let line = io.read("> ")
@@ -43,6 +45,18 @@ while true {
 	}
 
 	io.print("< You said:", line)
+}
+```
+
+#### Range Loops
+
+```bia
+for i in range(10) {
+	io.print(i)
+}
+
+for m in /\d+/.match_all("18.07.2020") {
+	io.print(m.group(0))
 }
 ```
 

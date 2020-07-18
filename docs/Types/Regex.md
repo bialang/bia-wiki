@@ -13,7 +13,26 @@ A `/` can be escaped with a `\`. The `\` only acts as a escape character in that
 !!! note
     `//` is not a valid regex expression. See [comments](../Syntax/Comments.md) for more information.
 
-## Modifiers[^1]
+## Examples
+
+```bia
+// matches any digit
+let pattern = /\d+/
+
+io.print(pattern == "65") // 1
+io.print(pattern in "some string") // 0
+io.print(pattern in "i am 21 years old") // 1
+io.print(pattern.match("i am 21 years old")) // <null>
+io.print(pattern.search("i am 21 years old").group(0)) // 21
+
+for i in pattern.match_all("18.07.2020") {
+    io.print(i.group(0))
+}
+```
+
+## Modifiers
+
+!!! warning "This has not been implemented yet"
 
 Modifiers come immediately after the enclosing `/` like:
 
@@ -32,10 +51,8 @@ let pattern = /a.+/si
 Depending on the underlying engine different RegEx features are supported. For more information check out the engine documentations.
 
 - `std::regex` *default*
-- PCRE2[^1]
+- PCRE2 *not supported*
 
 ```bia
 let engine_name = /./.name
 ```
-
-[^1]: This feature has not been implemented yet.
