@@ -3,13 +3,22 @@ use_directory_urls: false
 theme:
   name: material
   font: false
+  palette:
+    scheme: preference
+    primary: deep purple
+    accent: yellow
+  language: en
 markdown_extensions:
   - admonition
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tilde
   - pymdownx.caret
-  - codehilite
+  - pymdownx.tabbed
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      linenums: true
   - footnotes
 nav:
   - Home: index.md

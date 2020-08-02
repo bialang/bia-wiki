@@ -6,7 +6,7 @@ Bia's primary focus is to be easily embeddable into a C++11 application. For thi
 
 Functions can be added with `function`, like:
 
-```cpp
+```C++ tab=
 inline int square(int x)
 {
 	return x * x;
@@ -19,11 +19,28 @@ engine.function("square", &square);
 engine.function("special", [](int x) { return x * x; });
 ```
 
+```C tab=
+static bia_creation_t square(bia_parameters_t params, void* arg)
+{
+	bia_parameters_t param = 0;
+	bia_creation_t result  = 0;
+	double x               = 1.0;
+
+	bia_parameters_at(params, 0, &param);
+	bia_member_cast_double(param, &x);
+	bia_create_double(x * x, &result);
+
+	return result;
+}
+
+bia_engine_put_function(engine, "square", &square, 0);
+```
+
 ## Advanced Functions
 
 ### Variable Parameters
 
-```cpp
+```C++ tab=
 inline int sum(bia::connector::parameters_type params)
 {
 	int s = 0;
@@ -43,7 +60,7 @@ engine.function("sum", &sum);
 
 ### Generators
 
-```cpp
+```C++ tab=
 #include <bia/member/function/generator.hpp>
 
 inline bia::gc::gcable<bia::member::member> read_lines(const char* filename)

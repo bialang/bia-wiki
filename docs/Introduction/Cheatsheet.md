@@ -4,17 +4,38 @@
 
 A Bia engine can be initialized like this:
 
-```cpp
+```C++ tab=
 #include <bia/bia.hpp>
 
 bia::engine engine;
+```
+
+```C tab=
+#include <bia/cbia.h>
+
+bia_engine_t engine = bia_engine_new();
+
+// always free afterwards
+bia_engine_free(engine);
+```
+
+```Go tab=
+import "github.com/bialang/gobia"
+
+engine, err := gobia.NewEngine()
+
+if err != nil {
+	panic(err)
+}
+
+defer engine.Close()
 ```
 
 ## Executing a Script
 
 The `bia::engine::execute` function takes a `std::istream` for the script:
 
-```cpp
+```C++ tab=
 #include <fstream>
 
 std::ifstream file{ "myscript.bia" };
@@ -55,7 +76,7 @@ for i in range(10) {
 	io.print(i)
 }
 
-for m in /\d+/.match_all("18.07.2020") {
+for m in r"\d+".match_all("18.07.2020") {
 	io.print(m.group(0))
 }
 ```

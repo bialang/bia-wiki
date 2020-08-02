@@ -2,22 +2,17 @@
 
 ## Syntax
 
-The pattern must be wrapped between `/` like following:
+The pattern must be wrapped between `r"` and `"` like following:
 
 ```bia
-let pattern = /ab+/
+let pattern = r"ab+"
 ```
-
-A `/` can be escaped with a `\`. The `\` only acts as a escape character in that perticular case.
-
-!!! note
-    `//` is not a valid regex expression. See [comments](../Syntax/Comments.md) for more information.
 
 ## Examples
 
 ```bia
 // matches any digit
-let pattern = /\d+/
+let pattern = r"\d+"
 
 io.print(pattern == "65") // 1
 io.print(pattern in "some string") // 0
@@ -34,10 +29,10 @@ for i in pattern.match_all("18.07.2020") {
 
 !!! warning "This has not been implemented yet"
 
-Modifiers come immediately after the enclosing `/` like:
+Modifiers come immediately after the regex without any spaces:
 
 ```bia
-let pattern = /a.+/si
+let pattern = r"a.+"si
 ```
 
 | Modifier | Meaning                               | Engine                          |
@@ -54,5 +49,5 @@ Depending on the underlying engine different RegEx features are supported. For m
 - PCRE2 *not supported*
 
 ```bia
-let engine_name = /./.name
+let engine_name = r"".name
 ```

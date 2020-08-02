@@ -31,7 +31,7 @@ cd bia/build
 With CMake and the source code, the library can be build as follows:
 
 ```bash
-cmake .. -DCMAKE_BUILD_TYPE=Release
+cmake ..
 cmake --build .
 ```
 
