@@ -4,7 +4,7 @@
 
 Strings can be compared with the `==` or `!=` operators or with `equals` or `iequals` for case-insensitive comparing. Additionally `compare` or `icompare` return an integer value describing the comparison.
 
-```bia
+```Bia
 import io
 
 io.print("bia" == "Bia") // 0
@@ -24,7 +24,7 @@ io.print("Bia" in "I like Bia") // 1
 
 When accessing characters at a specific position keep in mind that the code unit is returned and not the actual code point. When the string consists of only BMP characters all code units are also code points (see UTF-16 encoding).
 
-```bia
+```Bia
 let string = "aが"
 
 // prints 3

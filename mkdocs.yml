@@ -5,8 +5,8 @@ theme:
   font: false
   palette:
     scheme: preference
-    primary: deep purple
-    accent: yellow
+    primary: blue grey
+    accent: blue grey
   language: en
 markdown_extensions:
   - admonition

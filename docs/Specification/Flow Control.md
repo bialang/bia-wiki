@@ -4,7 +4,7 @@
 
 ### `if`, `else if` and `else`
 
-```bia
+```Bia
 if x {
 	io.print("x evaluates to true")
 } else if not y {
@@ -18,7 +18,7 @@ if x {
 
 ### `while`
 
-```bia
+```Bia
 while x {
 	io.print(x)
 
@@ -32,7 +32,7 @@ while x {
 
 ### `for...in`
 
-```bia
+```Bia
 for i in range(10) {
 	io.print(i)
 }

@@ -4,13 +4,13 @@
 
 The pattern must be wrapped between `r"` and `"` like following:
 
-```bia
+```Bia
 let pattern = r"ab+"
 ```
 
 ## Examples
 
-```bia
+```Bia
 // matches any digit
 let pattern = r"\d+"
 
@@ -31,7 +31,7 @@ for i in pattern.match_all("18.07.2020") {
 
 Modifiers come immediately after the regex without any spaces:
 
-```bia
+```Bia
 let pattern = r"a.+"si
 ```
 
@@ -48,6 +48,6 @@ Depending on the underlying engine different RegEx features are supported. For m
 - `std::regex` *default*
 - PCRE2 *not supported*
 
-```bia
+```Bia
 let engine_name = r"".name
 ```

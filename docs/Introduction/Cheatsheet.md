@@ -39,7 +39,6 @@ The `bia::engine::execute` function takes a `std::istream` for the script:
 #include <fstream>
 
 std::ifstream file{ "myscript.bia" };
-
 engine.execute(file);
 ```
 
@@ -47,9 +46,8 @@ engine.execute(file);
 
 ### Variables
 
-```bia
+```Bia
 let x = 0
-
 let x = null // x is deleted
 ```
 
@@ -57,7 +55,7 @@ let x = null // x is deleted
 
 #### Condition Based
 
-```bia
+```Bia
 while true {
 	let line = io.read("> ")
 
@@ -71,7 +69,7 @@ while true {
 
 #### Range Loops
 
-```bia
+```Bia
 for i in range(10) {
 	io.print(i)
 }
@@ -83,7 +81,7 @@ for m in r"\d+".match_all("18.07.2020") {
 
 ### Conditionals
 
-```bia
+```Bia
 if x and not y {
 	io.print(x)
 } else if y {

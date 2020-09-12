@@ -2,7 +2,7 @@
 
 ## builtin `list`
 
-```bia
+```Bia
 let empty = list()
 let my_list = list(1, "the second element", 3)
 
