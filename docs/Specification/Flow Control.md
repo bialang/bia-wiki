@@ -4,13 +4,13 @@
 
 ### `if`, `else if` and `else`
 
-```Bia
+```bia
 if x {
-	io.print("x evaluates to true")
+    io.print("x evaluates to true")
 } else if not y {
-	io.print("x and y evaluate to false")
+    io.print("x and y evaluate to false")
 } else {
-	io.print("why am i here")
+    io.print("why am i here")
 }
 ```
 
@@ -18,15 +18,13 @@ if x {
 
 ### `while`
 
-```Bia
+```bia
 while x {
-	io.print(x)
-
-	if not y {
-		break
-	}
-
-	x = y.something()
+    io.print(x)
+    if not y {
+        break
+    }
+    x = y.something()
 }
 ```
 
@@ -34,7 +32,7 @@ while x {
 
 ```Bia
 for i in range(10) {
-	io.print(i)
+    io.print(i)
 }
 ```
 

@@ -1,35 +1,34 @@
 # Cheatsheet
 
 ## The Engine
-
 A Bia engine can be initialized like this:
 
-```C++ tab=
-#include <bia/bia.hpp>
+=== "C++"
+    ```cpp
+    #include <bia/bia.hpp>
 
-bia::engine engine;
-```
+    bia::engine engine;
+    ```
 
-```C tab=
-#include <bia/cbia.h>
+=== "C"
+    ```c
+    #include <bia/cbia.h>
 
-bia_engine_t engine = bia_engine_new();
+    bia_engine_t engine = bia_engine_new();
+    // always free afterwards
+    bia_engine_free(engine);
+    ```
 
-// always free afterwards
-bia_engine_free(engine);
-```
+=== "Go"
+    ```go
+    import "github.com/bialang/gobia"
 
-```Go tab=
-import "github.com/bialang/gobia"
-
-engine, err := gobia.NewEngine()
-
-if err != nil {
-	panic(err)
-}
-
-defer engine.Close()
-```
+    engine, err := gobia.NewEngine()
+    if err != nil {
+        panic(err)
+    }
+    defer engine.Close()
+    ```
 
 ## Executing a Script
 
@@ -55,15 +54,13 @@ let x = null // x is deleted
 
 #### Condition Based
 
-```Bia
+```bia
 while true {
-	let line = io.read("> ")
-
-	if not line {
-		break
-	}
-
-	io.print("< You said:", line)
+    let line = io.read("> ")
+    if not line {
+        break
+    }
+    io.print("< You said:", line)
 }
 ```
 
@@ -71,11 +68,11 @@ while true {
 
 ```Bia
 for i in range(10) {
-	io.print(i)
+    io.print(i)
 }
 
 for m in r"\d+".match_all("18.07.2020") {
-	io.print(m.group(0))
+    io.print(m.group(0))
 }
 ```
 
@@ -83,8 +80,8 @@ for m in r"\d+".match_all("18.07.2020") {
 
 ```Bia
 if x and not y {
-	io.print(x)
+    io.print(x)
 } else if y {
-	io.print(y)
+    io.print(y)
 }
 ```

@@ -1,5 +1,4 @@
 # Keywords
-
 Keywords are special words with a specific meaning. Keywords cannot be used as identifiers.
 
 - `let`

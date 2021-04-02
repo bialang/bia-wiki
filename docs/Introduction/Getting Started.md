@@ -16,3 +16,6 @@ For simple embedding in C++ including `<bia/bia.hpp>` and using `bia::engine` sh
 ```sh
 go get github.com/bialang/gobia
 ```
+
+!!! note
+    You will need to have Bia installed on your machine in order to be able to use this interface.
