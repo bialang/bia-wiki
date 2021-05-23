@@ -39,6 +39,7 @@ nav:
   - Engine:
     - Engine: Engine/Engine.md
     - Memory: Engine/Memory.md
+    - Stack: Engine/Stack.md
     - Op Codes: Engine/Op Codes.md
   - Specification:
     - Variables: Specification/Variables.md
