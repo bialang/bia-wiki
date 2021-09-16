@@ -4,50 +4,48 @@
 A Bia engine can be initialized like this:
 
 === "C++"
+
     ```cpp
-    #include <bia/bia.hpp>
+    #include <bia/engine.hpp>
 
-    bia::engine engine;
-    ```
-
-=== "C"
-    ```c
-    #include <bia/cbia.h>
-
-    bia_engine_t engine = bia_engine_new();
-    // always free afterwards
-    bia_engine_free(engine);
-    ```
-
-=== "Go"
-    ```go
-    import "github.com/bialang/gobia"
-
-    engine, err := gobia.NewEngine()
-    if err != nil {
-        panic(err)
-    }
-    defer engine.Close()
+    bia::Engine engine;
     ```
 
 ## Executing a Script
 
-The `bia::engine::execute` function takes a `std::istream` for the script:
+The `execute()` function of the engine takes a `std::istream` for the script. It compiles and runs the code immediately:
 
-```C++ tab=
-#include <fstream>
+=== "C++"
 
-std::ifstream file{ "myscript.bia" };
-engine.execute(file);
-```
+    ```cpp
+    #include <fstream>
+
+    std::ifstream file{ "myscript.bia" };
+    engine.execute(file);
+    ```
 
 ## Language Reference
 
 ### Variables
 
-```Bia
+```bia
 let x = 0
-let x = null // x is deleted
+let x: int = 0
+
+x = 1 // 'x' is immutable
+let mut x = 0
+x = 0 // is now accepted
+
+drop x // 'x' is now unkown
+```
+
+### Scopes
+
+```bia
+scope {
+    let x = 0
+}
+print(x) // 'x' is undefined
 ```
 
 ### Looping
@@ -61,18 +59,6 @@ while true {
         break
     }
     io.print("< You said:", line)
-}
-```
-
-#### Range Loops
-
-```Bia
-for i in range(10) {
-    io.print(i)
-}
-
-for m in r"\d+".match_all("18.07.2020") {
-    io.print(m.group(0))
 }
 ```
 

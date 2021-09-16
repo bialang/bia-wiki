@@ -2,7 +2,19 @@
 
 Bia's primary focus is to be easily embeddable into a C++11 application. For this purpose Bia exposes a simple wrapper class `bia::engine` (include `<bia/bia.hpp>`).
 
-## Native Functions
+## Variables
+
+=== "C++"
+
+    ```cpp
+    engine.variable("argc", argc);
+    engine.variable("pi", 3.141);
+    engine.variable("path", std::string{ std::getenv("PATH") });
+    ```
+
+## Functions
+
+### Simple Functions
 
 Functions can be added with `function`, like:
 
@@ -21,6 +33,9 @@ Functions can be added with `function`, like:
     ```
 
 === "C"
+    !!! warning
+        This part has not been implemented yet.
+
     ```c
     static bia_creation_t square(bia_parameters_t params, void* arg)
     {
@@ -38,54 +53,76 @@ Functions can be added with `function`, like:
     bia_engine_put_function(engine, "square", &square, 0);
     ```
 
-## Advanced Functions
-
 ### Variable Parameters
 
-```C++ tab=
-inline int sum(bia::connector::parameters_type params)
-{
-    int s = 0;
+=== "C++"
 
-    // all parameters
-    for (auto param : params) {
-        if (param) {
-            s += bia::cast<int>(*param);
+    ```cpp
+    inline std::ptrdiff_t sum(
+        bia::member::function::Varargs<std::ptrdiff_t> params)
+    {
+        std::ptrdiff_t s = 0;
+        for (std::size_t i = 0; i < args.size(); ++i) {
+            s += args.at(i);
+        }
+        return s;
+    }
+
+    engine.function("sum", &sum);
+    ```
+
+### Type Unions
+
+=== "C++ Static"
+
+    ```cpp
+    inline void print(bia::util::Variant<std::ptrdiff_t,
+                      std::string> value)
+    {
+        if (value.is_type<std::ptrdiff_t>()) {
+            std::cout << "<int>: " << value.get<std::ptrdiff_t>() << "\n";
+        } else {
+            std::cout << "<str>: " << value.get<std::string>() << "\n";
         }
     }
 
-    return s;
-}
+    engine.function("print", &print);
+    ```
 
-engine.function("sum", &sum);
-```
+## Objects
 
-### Generators
+Object can be populated like the global namespace with `variable()`, `function()` and `object()`:
 
-```C++ tab=
-#include <bia/member/function/generator.hpp>
+=== "C++"
 
-inline bia::gc::gcable<bia::member::member> read_lines(const char* filename)
-{
-    const auto file = std::make_shared<std::fstream>(filename);
+    ```cpp
+    auto obj = engine.object("obj");
+    args.function("hello", [](std::string s) { std::cout << s << "\n"; });
+    args.variable("world", std::string{ "hello world" });
+    args.finish();
+    ```
 
-    if (!file->is_open()) {
-        return {};
-    }
+## Modules
 
-    auto generator = [file]() -> bia::gc::gcable<bia::member::member> {
-        std::string line;
+### Runtime Modules
 
-        if (std::getline(*file, line)) {
-            return bia::creator::create(line);
-        }
+Runtime modules are just like objects with the only exception that they are not available in the global namespace without any explicit `import` statement. Just like the example in the objects section:
 
-        return bia::member::function::stop_iteration;
-    };
+=== "C++"
 
-    return bia::gc::gc::active_gc()
-        ->construct<bia::member::function::generator<
-            bia::member::function::method<false, decltype(&decltype(generator)::operator())>>>(
-            generator, &decltype(generator)::operator());
-}
+    ```cpp
+    auto obj = engine.module("obj");
+    args.function("hello", [](std::string s) { std::cout << s << "\n"; });
+    args.variable("world", std::string{ "hello world" });
+    args.finish();
+    ```
+
+    !!! note
+        Note the difference in the first line between `engine.object()` and `engine.module()`.
+
+Usage in Bia:
+
+```bia
+import obj
+obj.hello(obj.world)
 ```

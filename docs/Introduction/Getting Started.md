@@ -13,6 +13,9 @@ For simple embedding in C++ including `<bia/bia.hpp>` and using `bia::engine` sh
 
 ## Go
 
+!!! warning
+    This package has not been updated. Do not use it yet.
+
 ```sh
 go get github.com/bialang/gobia
 ```

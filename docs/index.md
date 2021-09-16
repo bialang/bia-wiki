@@ -1,5 +1,5 @@
 # Welcome to Bia
-Bia is a statically and strongly typed programming language. The primary goal is to be able to embed it into C++ applications. There are also C and Go ports. The second goal is to be a readable and intuitive language.
+Bia is a statically and strongly typed programming language. The primary goal is to be able to embed it into C++ applications. There are also plans for C and Go ports. The second goal is to be a readable and intuitive language.
 
 ## Dependencies
 Bia does not need any dependencies apart from a C++11 compatible compiler and the standard library.
